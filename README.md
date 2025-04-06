@@ -1,59 +1,47 @@
 # BakerScale
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+Accurate Ingredient Measurement for Better Baking
 
-## Development server
+BakerScale is an intelligent web application that helps users convert, scale, and manage baking ingredients with precision using AI. Designed for bakers of all skill levels, BakerScale eliminates guesswork and supports global units, image/voice/text inputs, and regional conversions — all in one place.
 
-To start a local development server, run:
+---
+
+## Google Solution Challenge 2025
+
+This project is proudly built as a part of the Google Solution Challenge 2025, aligned with the United Nations Sustainable Development Goals (SDGs). BakerScale aims to:
+
+- Reduce food waste through accurate measurement and scaling.
+- Promote responsible consumption (SDG 12).
+- Empower home-based and small-scale bakers with accessible technology (SDG 8).
+
+---
+
+## Features
+
+- AI-Powered Unit Conversion – Convert ingredients between volume and weight using real-time AI and density data.
+- Image-Based Recognition – Upload or capture an ingredient or baked product to get ingredient details or full recipes.
+- Voice/Text Input – Input ingredients in natural language or via voice for effortless conversions.
+- Region-Aware Units – Adjust ingredient measurements according to local conventions (e.g., grams vs. cups).
+- Gemini AI Integration – Uses Google’s Gemini API for intelligent ingredient extraction and recipe scaling.
+- Firestore & Cloud Functions – Efficient backend with Firebase for secure data handling and real-time updates.
+- Local Recipe Storage – Save detected or custom recipes directly into your account.
+
+---
+
+## Tech Stack
+
+- Frontend: Angular (Standalone Components), Tailwind CSS
+- Backend: Firebase (Cloud Functions, Firestore, Authentication, Storage)
+- AI Services: Google Gemini API, Google Cloud Vision
+- Hosting: Firebase Hosting
+
+---
+
+## Getting Started
 
 ```bash
+git clone https://github.com/yourusername/bakerscale.git
+cd bakerscale
+npm install
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Set up Firebase project, Gemini API access, and configure environment variables before running.
