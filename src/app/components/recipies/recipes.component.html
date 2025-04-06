@@ -1,0 +1,49 @@
+<div *ngIf="loading" class="fullscreen-loader">
+<app-loader></app-loader>
+</div>
+<div class="container2" *ngIf="!loading">
+  <div *ngIf="(recipes$ | async) as recipes" class="recipe-grid">
+    <div *ngFor="let recipe of recipes" class="recipe-card" (click)="openRecipe(recipe)">
+      <img [src]="recipe.image" [alt]="recipe.id" class="recipe-img"/>
+      <p>{{ recipe.id }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Recipe Details Popup Modal -->
+<div class="modal" *ngIf="selectedRecipe" (click)="closeRecipe()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close-btn" (click)="closeRecipe()">&times;</span>
+
+    <h2 style="color:#7A4B24">{{ selectedRecipe.id }}</h2>
+
+
+    <!-- 🔹 Recipe Content (Hidden While Loading) -->
+    <div class="modal-body">
+      <div class="recipe-image">
+        <img [src]="selectedRecipe.image" [alt]="selectedRecipe.id" class="modal-img"/>
+      </div>
+
+      <div class="recipe-details">
+        <!-- Servings Input -->
+        <h3>Servings: 
+          <input type="number" [(ngModel)]="userServings" (input)="adjustRecipe()" min="1"/>
+        </h3>
+
+        <!-- 🔹 AI-Generated Ingredients (Only Show If Available) -->
+        <h3>Ingredients</h3>
+        <div *ngIf="adjustedRecipe?.ingredients">
+          <li *ngFor="let ingredient of adjustedRecipe.ingredients">
+            {{ ingredient.quantity }} - {{ ingredient.name }}
+          </li>
+        </div>
+
+        <!-- 🔹 AI-Generated Instructions (Only Show If Available) -->
+        <h3>Instructions</h3>
+        <div *ngIf="adjustedRecipe?.instructions">
+          <li *ngFor="let step of adjustedRecipe.instructions">{{ step }}</li>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

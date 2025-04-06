@@ -1,0 +1,61 @@
+<div *ngIf="loading" class="fullscreen-loader">
+  <app-loader *ngIf="loading"></app-loader>
+</div>
+
+<div style="display: flex;justify-content: center;align-items: center;" class="voice">
+  
+<div class="voice-input-container">
+  <h3>Speak Your Recipe</h3>
+  <textarea [(ngModel)]="recipeText" placeholder="Your recipe will appear here..."></textarea>
+  <div style="display: flex;justify-content: center;align-items: center;">
+  <div class="unit-grid">
+  
+  <label for="outputUnit"><h4>Convert to:</h4></label>
+  <select id="outputUnit" [(ngModel)]="selectedUnit">
+    <option *ngFor="let unit of availableUnits" [value]="unit">{{ unit }}</option>
+  </select>
+
+  <label for="measurementSystem"><h4>Region:</h4></label>
+  <select id="measurementSystem" [(ngModel)]="selectedRegion">
+    <option *ngFor="let region of availableRegions" [value]="region">{{ region }}</option>
+  </select>
+</div>
+</div>
+<div class="buttons-container">
+  <div class="top-buttons">
+    <button (click)="startVoiceInput()" [disabled]="isListening" title="Start Recording"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g fill="none" stroke="#7A4B24" stroke-linejoin="round" stroke-width="4"><rect width="14" height="27" x="17" y="4" fill="#7A4B24" rx="7"/><path stroke-linecap="round" d="M9 23c0 8.284 6.716 15 15 15s15-6.716 15-15M24 38v6"/></g></svg></button>
+    <button (click)="stopVoiceInput()" [disabled]="!isListening" title="Stop Recording"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 16 16"><path fill="#7A4B24" fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M6 5.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5z" clip-rule="evenodd"/></svg></button>
+  </div>
+
+  <div class="bottom-bar" style="display:flex;justify-content:center;">
+    <div>
+    <button (click)="convertIngredients()" [disabled]="extractedData.length === 0" title="Convert Ingredients" style="background-color: #8B4513;color: #F5E6C8;">Convert</button>
+    </div>
+    <div>
+    <button (click)="clearText()" title="Clear Text" style="background-color: #8B4513;color:#F5E6C8">Clear</button>
+    </div>
+  </div> 
+</div>
+
+
+
+  <div *ngIf="extractedData.length > 0">
+    <h3>📝 Extracted Ingredients:</h3>
+    <div>
+      <li *ngFor="let item of extractedData">
+        {{ item.measure }} of {{ item.ingredient }}
+      </li>
+    </div>
+  </div>
+
+  
+  <div *ngIf="convertedData.length > 0">
+    <h3>🔄 Converted Ingredients:</h3>
+    <div>
+      <li *ngFor="let item of convertedData">
+        {{ item.measure }} of {{ item.ingredient }}
+      </li>
+    </div>
+  </div>
+</div>
+</div>

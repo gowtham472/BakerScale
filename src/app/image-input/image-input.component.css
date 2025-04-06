@@ -1,0 +1,149 @@
+.image-input-container {
+    max-width: 500px;
+    width:80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #F5E6C8;
+    color:#7A4B24;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .image-preview {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  .image-preview1 {
+    justify-content: center;
+    margin-bottom: 15px;
+    border: 2px dashed;
+    border-radius: 10px;
+    height: 200px;
+  }
+  
+  .image-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+  }
+  
+  .image-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .image-actions button {
+    padding: 10px 15px;
+    background: #7A4B24;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .image-actions button:hover {
+    background: #523319;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background: white;
+    color: #7A4B24;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background: #523319;
+    color: #ffffff;
+  }
+  
+  button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    color: white;
+  }
+  
+  .detection-result {
+    margin-top: 15px;
+    padding: 15px;
+    max-width: 500px;
+    width:80%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #F5E6C8;
+    margin-bottom: 20px;
+    color: #7A4B24;
+  }
+  
+  .detection-result h4 {
+    margin-bottom: 10px;
+    color:#523319;
+  }
+  
+  .local-recipes {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 2px solid #ddd;
+  }
+  
+  .local-recipes ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .local-recipes li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .local-recipes img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
+  
+  .local-recipes button {
+    background: #dc3545;
+  }
+  .custom-upload-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #7A4B24;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .custom-upload-button:hover {
+    background: #523319;
+  }
+  
+  
+  .fullscreen-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}

@@ -1,0 +1,46 @@
+<div *ngIf="loading" class="fullscreen-loader">
+  <app-loader *ngIf="loading"></app-loader>
+</div>
+<div style="display: flex;justify-content: center;align-items: center;" class="text">
+<div class="text-input">
+  <h3 style="color: #7A4B24;">Type Your Recipe</h3>
+<textarea [(ngModel)]="recipeText" placeholder="Enter your recipe here" required></textarea>
+  
+<div style="display: flex;justify-content: center;align-items: center;">
+<div class="unit-grid">
+  <!-- Output Unit Selection -->
+  <div><h4>Output Unit:</h4></div>
+  <div>
+    <select id="outputUnit" [(ngModel)]="selectedOutputUnit">
+      <option value="" disabled>Choose output unit</option>
+      <option *ngFor="let unit of availableUnits" [value]="unit">{{ unit }}</option>
+    </select>
+  </div>
+
+  <!-- Region Selection -->
+  <div><h4>Region:</h4></div>
+  <div>
+    <select id="region" [(ngModel)]="selectedRegion">
+      <option value="" disabled>Select Region</option>
+      <option *ngFor="let region of availableRegions" [value]="region">{{ region }}</option>
+    </select>
+  </div>
+</div>
+</div>
+<!-- Convert Button -->
+<button (click)="convertRecipe()">Convert Units</button>
+
+<!-- 🔹 Popup to Show Converted Data -->
+<div class="popup" *ngIf="showPopup">
+  <div class="popup-content">
+    <h3>Converted Ingredients</h3>
+    <div>
+      <li *ngFor="let item of convertedData">
+        {{ item.measure }} of {{ item.ingredient }}
+      </li>
+    </div>
+    <button (click)="closePopup()">Close</button>
+  </div>
+</div>
+</div>
+</div>

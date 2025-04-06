@@ -1,0 +1,22 @@
+<div class="login-page">
+    <div class="left-panel">
+      <img src="assets/logo-brown2.png" height="40px"/>
+      <h1 style="margin: 5px;">BakerScale</h1>
+      <p class="sub-title">Precision Baking, Perfect Measure</p>
+      <button (click)="login()">Login</button>
+      <p style="font-size: 10px;">Already have an account? Login</p>
+    </div>
+    <div class="right-panel">
+      <h2>Register</h2>
+      <p *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </p>
+      <input type="email" #email placeholder="Email">
+      <input type="password" #password placeholder="Password">
+      <button (click)="register(email.value, password.value)">Register</button>
+      <button class="google" (click)="loginGoogle()">
+        <img src="assets/google.png" width="20" height="20"> Register with Google
+      </button>
+    </div>
+  </div>
+  

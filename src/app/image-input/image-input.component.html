@@ -1,0 +1,93 @@
+<div *ngIf="!loading" class="fullscreen-loader">
+  <app-loader *ngIf="!loading"></app-loader>
+</div>
+<div class="image-input-container">
+  <h3>Ingredient & Recipe Detection</h3>
+  <div class="image-preview1" *ngIf="!imageUrl">
+    <div style="margin:10px">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
+        <g fill="none" stroke="#7A4B24" stroke-linecap="round" stroke-width="1.5">
+          <path stroke-linejoin="round" d="M21.25 13V8.5a5 5 0 0 0-5-5h-8.5a5 5 0 0 0-5 5v7a5 5 0 0 0 5 5h6.26" />
+          <path stroke-linejoin="round"
+            d="m3.01 17l2.74-3.2a2.2 2.2 0 0 1 2.77-.27a2.2 2.2 0 0 0 2.77-.27l2.33-2.33a4 4 0 0 1 5.16-.43l2.47 1.91M8.01 10.17a1.66 1.66 0 1 0-.02-3.32a1.66 1.66 0 0 0 .02 3.32" />
+          <path stroke-miterlimit="10" d="M18.707 15v5" />
+          <path stroke-linejoin="round" d="m21 17.105l-1.967-1.967a.46.46 0 0 0-.652 0l-1.967 1.967" />
+        </g>
+      </svg>
+    </div>
+    <p>Upload Your Image</p>
+  </div>
+
+  <div class="image-preview" *ngIf="imageUrl">
+
+    <img [src]="imageUrl" alt="Selected Image">
+  </div>
+
+
+  <div class="image-actions">
+
+    <input type="file" accept="image/*" id="fileInput" (change)="onFileSelect($event)" hidden>
+
+
+    <button><label for="fileInput" class="custom-upload-button">Upload</label></button>
+
+
+    <button (click)="captureImage()">Capture</button>
+  </div>
+
+
+  <button (click)="detectIngredientOrProduct()" [disabled]="!imageFile || detecting">
+
+    {{ detecting ? 'Detecting...' : 'Detect' }}
+  </button>
+</div>
+
+<div style="display: flex;justify-content:center;">
+
+  <div #detectedResult class="detection-result" *ngIf="detectedInfo">
+    <h4>Detection Result:</h4>
+
+    <p><strong>Type:</strong> {{ (detectedInfo.type | titlecase)?.replace('_', ' ') }}</p>
+
+
+    <div *ngIf="detectedInfo.type === 'ingredient'">
+
+      <p><strong>Ingredient Name:</strong> {{ detectedInfo.name }}</p>
+
+      <h4>Common Uses:</h4>
+
+      <div>
+        <li *ngFor="let use of detectedInfo.uses">{{ use }}</li>
+      </div>
+    </div>
+
+
+    <div *ngIf="detectedInfo.type === 'baked_product' && detectedInfo.recipe">
+
+      <p><strong>Recipe Name:</strong> {{ detectedInfo.recipe.name }}</p>
+
+      <p><strong>Description:</strong> {{ detectedInfo.recipe.description }}</p>
+
+      <h4>Ingredients:</h4>
+
+      <div>
+        <li *ngFor="let ingredient of detectedInfo.recipe.ingredients">
+          <strong>{{ ingredient.ingredient }}</strong>
+          {{ ingredient.quantity }} {{ ingredient.unit }}
+          <span *ngIf="ingredient.notes">({{ ingredient.notes }})</span>
+        </li>
+      </div>
+
+      <h4>Instructions:</h4>
+
+      <div>
+        <li *ngFor="let step of detectedInfo.recipe.steps">{{ step }}</li>
+      </div>
+    </div>
+
+
+    <div *ngIf="detectedInfo.type === 'unknown'">
+      <p>Unable to determine the ingredient or baked product.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="recent-container">
+<div class="recent-conversions" *ngIf="getRecentConversions().length > 0" style="margin-top: 15px;">
+    <div *ngIf="getRecentConversions().length > 0">
+      <h3>Recent Conversions:</h3>
+      <div>
+        <li *ngFor="let conversion of getRecentConversions()">
+          <strong>Input:</strong> {{ conversion.input }}
+          <div>
+            <li *ngFor="let item of conversion.output">
+              <strong>Output:</strong> {{ item.measure }} {{ item.unit }} of {{ item.ingredient }} ({{ item.region }})
+            </li>
+          </div>
+        </li>
+      </div>
+    </div>
+    <button (click)="clearRecentConversions()" class="clearRecentConversionsButton">Clear Recent Conversions</button>
+</div>  
+</div>

@@ -1,0 +1,40 @@
+{
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@google-cloud/firestore": "^7.11.0",
+    "@google-cloud/language": "^6.2.0",
+    "@google-cloud/storage": "^6.0.0",
+    "@google/generative-ai": "^0.24.0",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^13.2.0",
+    "firebase-functions": "^6.3.2",
+    "google-auth-library": "7.14.1",
+    "multer": "^1.4.5-lts.2"
+  },
+  "devDependencies": {
+    "@types/multer": "^1.4.12",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.8.2"
+  },
+  "private": true
+}

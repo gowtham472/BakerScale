@@ -1,0 +1,17 @@
+<nav class="navbar" *ngIf="user()">
+    <div class="nav-left" style="display:flex;justify-content: space-around;align-items:center">
+      <img src="assets/logo.png" alt="Logo">
+    </div>
+    <!-- Burger Menu Button -->
+    <div class="burger-menu" (click)="toggleMenu()">
+      <img src="assets/menu.png" alt="Menu">
+    </div>
+    <!-- Navigation Links -->
+    <div class="nav-links" [class.show]="menuOpen()">
+      <a (click)="home()">Home</a>
+      <a (click)="recipies()">Recipes</a>
+      <a (click)="image()">Detect</a>
+      <a (click)="logout()">Logout</a>
+    </div>
+  </nav>
+  
